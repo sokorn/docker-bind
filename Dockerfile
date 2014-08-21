@@ -16,6 +16,12 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install bind9 -y
 
+#add startup script an make it executable
+ADD startup /usr/local/bin/startup
+RUN chmod +x /usr/local/bin/startup
+
+CMD ["/usr/local/bin/startup"]
+
 VOLUME ["/etc/bind"]
 
 EXPOSE 53

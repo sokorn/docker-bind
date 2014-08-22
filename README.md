@@ -36,6 +36,11 @@ to start the container as deamon
 
 to start/stop the container just use ´docker [start/stop] bind`
 
+ToDo
+-------
+
+- Error Logs to observe the container while running
+
 General
 --------
 

@@ -14,7 +14,7 @@ RUN dpkg-reconfigure locales
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install bind9 dnsutils nano haveged -y
+RUN apt-get install bind9 dnsutils nano -y
 
 #add startup script an make it executable
 ADD startup /usr/local/bin/startup

@@ -15,4 +15,17 @@ chown root:bind /etc/bind/named.conf.options
 chmod 640 /etc/bind/rndc.key
 chown bind:bind /etc/bind/rndc.key
 
+mkdir -p /var/log/named
+chown root:bind /var/log/named
+
+echo 'nameserver 127.0.0.1' > /etc/resolv.conf
+echo '#resolver1.dns.watch' >> /etc/resolv.conf
+echo 'nameserver 84.200.69.80' >> /etc/resolv.conf
+echo '#resolver2.dns.watch' >> /etc/resolv.conf
+echo 'nameserver 84.200.70.40' >> /etc/resolv.conf
+echo '#resolver1v6.dns.watch' >> /etc/resolv.conf
+echo 'nameserver 2001:1608:10:25::1c04:b12f' >> /etc/resolv.conf
+echo '#resolver2.dns.watch' >> /etc/resolv.conf
+echo 'nameserver 2001:1608:10:25::9249:d69b' >> /etc/resolv.conf
+
 exec /usr/sbin/named -c /etc/bind/named.conf -f

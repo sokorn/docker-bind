@@ -1,6 +1,6 @@
 # Bind container
 #
-# version 0.1
+# version 0.2
 
 FROM ubuntu:14.04
 
@@ -12,12 +12,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN locale-gen de_DE de_DE.UTF-8
 RUN dpkg-reconfigure locales
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install bind9 dnsutils nano -y
+RUN apt-get update && apt-get install -y \
+        bind9 dnsutils nano
 
 #add startup script an make it executable
-ADD startup /usr/local/bin/startup
+COPY startup /usr/local/bin/startup
 RUN chmod +x /usr/local/bin/startup
 
 CMD ["/usr/local/bin/startup"]
